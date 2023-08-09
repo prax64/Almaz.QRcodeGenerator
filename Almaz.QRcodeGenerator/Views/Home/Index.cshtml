@@ -1,0 +1,28 @@
+﻿@using QRCoder;
+@model Almaz.QRcodeGenerator.ViewModel.GenerateQRcodeViewModel
+@{
+    ViewData["Title"] = "QR code generator";
+
+    string QRCodeImageIrl = Model != null ? Model.QRcodeImageUrl : "";
+}
+
+
+<div class="row">
+    <div class="col-lg-6 m-auto">
+
+        <form asp-action="Index" method="post">
+            <textarea name="text" class="from-control mb-3" rows="5" placeholder="Введите текст"></textarea>
+            <button type="submit" class="btn btn-primary">Generate</button>
+        </form>
+
+        @if(QRCodeImageIrl != "")
+        {
+            <div class="w-50 m-auto">
+                <img src="@QRCodeImageIrl" class="img-fluid w-100 h-100 mb-3"/>
+                <a href="@QRCodeImageIrl" class="btn btn-primary w-100" download="QRCode.png">Download</a>
+
+            </div>
+        }
+
+    </div>
+</div>
